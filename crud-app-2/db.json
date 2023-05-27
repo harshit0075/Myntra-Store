@@ -1,10 +1,15 @@
 {
   "products": [
+    
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "image": "https://assets.ajio.com/medias/sys_master/root/20221213/zphP/63979380f997ddfdbdcfcc5b/-473Wx593H-465425533-white-MODEL.jpg",
+      "price": 199,
+      "brand": "HRX",
+      "category": "top-wear",
+      "gender": "men",
+      "name": "T-shirt",
+      "id": 1
     }
+    
   ]
-
 }
