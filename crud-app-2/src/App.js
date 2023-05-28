@@ -1,11 +1,12 @@
 
 import './App.css';
+import { Navbar } from './Components/Navbar';
 import { MainRoutes } from './Pages/MainRoutes';
 
 function App() {
   return (
     <div className="App">
-      <h1>Crud App</h1>
+     <Navbar/>
   <MainRoutes/>
     </div>
   );

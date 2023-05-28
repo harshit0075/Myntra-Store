@@ -45,7 +45,7 @@ const handleSubmit=(e)=>{
           <option value="">Select Category</option>
           <option value="top-wear">Top Wear</option>
           <option value="bottom-wear">Bottom Wear</option>
-          <option value="shoes">Shoes</option>
+          <option value="foot-wear">Shoes</option>
         </select>
         <select name="gender" value={product.gender}
         onChange={(e)=>handleChange(e)}>

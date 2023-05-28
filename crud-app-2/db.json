@@ -1,6 +1,5 @@
 {
   "products": [
-    
     {
       "image": "https://assets.ajio.com/medias/sys_master/root/20221213/zphP/63979380f997ddfdbdcfcc5b/-473Wx593H-465425533-white-MODEL.jpg",
       "price": 199,
@@ -9,7 +8,51 @@
       "gender": "men",
       "name": "T-shirt",
       "id": 1
+    },
+    {
+      "image": "https://www.hindustantimes.com/ht-img/img/2023/05/26/550x309/CRICKET-IND-IPL-T20-GUJARAT-MUMBAI-44_1685123635563_1685124124990.jpg",
+      "price": 299,
+      "brand": "GT",
+      "category": "bottom-wear",
+      "gender": "men",
+      "name": "Gill",
+      "id": 2
+    },
+    {
+      "image": "https://www.hindustantimes.com/ht-img/img/2023/05/26/550x309/CRICKET-IND-IPL-T20-GUJARAT-MUMBAI-44_1685123635563_1685124124990.jpg",
+      "price": 121,
+      "brand": "DM",
+      "category": "bottom-wear",
+      "gender": "women",
+      "name": "JRD",
+      "id": 3
+    },
+    {
+      "image": "https://assets.ajio.com/medias/sys_master/root/20221213/zphP/63979380f997ddfdbdcfcc5b/-473Wx593H-465425533-white-MODEL.jpg",
+      "price": 185,
+      "brand": "CSK",
+      "category": "bottom-wear",
+      "gender": "kids",
+      "name": "THALA",
+      "id": 4
+    },
+    {
+      "image": "https://www.hindustantimes.com/ht-img/img/2023/05/26/550x309/CRICKET-IND-IPL-T20-GUJARAT-MUMBAI-44_1685123635563_1685124124990.jpg",
+      "price": 133,
+      "brand": "GTT",
+      "category": "foot-wear",
+      "gender": "kids",
+      "name": "avb",
+      "id": 5
+    },
+    {
+      "image": "https://assets.ajio.com/medias/sys_master/root/20221213/zphP/63979380f997ddfdbdcfcc5b/-473Wx593H-465425533-white-MODEL.jpg",
+      "price": 18,
+      "brand": "HRXX",
+      "category": "foot-wear",
+      "gender": "women",
+      "name": "abcd",
+      "id": 6
     }
-    
   ]
 }

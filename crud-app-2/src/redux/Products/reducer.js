@@ -1,6 +1,6 @@
 // import { LOGIN_SUCCESS } from "../Authentication/actionTypes";
 
-import { POST_PRODUCT_SUCCESS, PRODUCT_FAILURE, PRODUCT_REQUEST } from "./actionTypes";
+import { GET_PRODUCT_SUCCESS, POST_PRODUCT_SUCCESS, PRODUCT_FAILURE, PRODUCT_REQUEST } from "./actionTypes";
 
 const initialState = {
     products: [],
@@ -17,6 +17,12 @@ export const reducer = (state = initialState, { type, payload }) => {
         case POST_PRODUCT_SUCCESS:
             return { ...state, isLoading: false,
          products: [...state.products, payload] }
+         case GET_PRODUCT_SUCCESS:
+            return {
+                ...state,
+                isLoading:false,
+                products:payload,
+            }
 
         default:
             return state;
