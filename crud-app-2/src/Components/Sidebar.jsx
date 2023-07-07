@@ -3,21 +3,26 @@ import { useSearchParams } from 'react-router-dom';
 import styled from 'styled-components'
 
 export const Sidebar = () => {
-    const [searchParams, setSearchParams]=useSearchParams();
-    let initialCategory=searchParams.getAll("category");
-    let initialGender=searchParams.getAll("gender");
-    const [category, setCategory] = useState(initialCategory ||[]);
-    const [gender, setGender] = useState( initialGender ||[]);
+    const [searchParams, setSearchParams] = useSearchParams();
+    let initialCategory = searchParams.getAll("category");
+    let initialGender = searchParams.getAll("gender");
+    let initialOrder=searchParams.get("order");
+    const [category, setCategory] = useState(initialCategory || []);
+    const [gender, setGender] = useState(initialGender || []);
+    const [order, setOrder]=useState(initialOrder||"");
 
-    useEffect(()=>{
-        let params={
+    useEffect(() => {
+        let params = {
             gender,
-            category
+            category,
+        //    order,
         }
-        setSearchParams(params)
-    },[category, gender])
+        order && (params.order=order);
 
-    console.log(gender);
+        setSearchParams(params)
+    }, [category, gender, order])
+
+    // console.log(gender);
     const handleCategory = (e) => {
         const { value } = e.target;
         let newCategory = [...category];
@@ -38,6 +43,12 @@ export const Sidebar = () => {
             newGender.push(value)
         }
         setGender(newGender);
+    }
+
+    const handleOrder=(e)=>{
+        const {value}=e.target;
+        setOrder(value)
+        // console.log(value);
     }
     return (
         <Div>
@@ -68,7 +79,18 @@ export const Sidebar = () => {
                 <input type="checkbox" value={"kids"} onChange={handleGender} checked={gender.includes("kids")} />
                 <label>Kids</label>
             </div>
-
+            <br/>
+            <h3>Sort by Price</h3>
+            <div onChange={handleOrder}>
+            <div>
+                <input type="radio" name='order' value={"asc"}defaultChecked={order==="asc"}/>
+                <label>Ascending</label>
+            </div>
+            <div>
+                <input type="radio" name='order' value={"desc"}defaultChecked={order==="desc"}/>
+                <label>Descending</label>
+            </div>
+            </div>
         </Div>
     )
 }

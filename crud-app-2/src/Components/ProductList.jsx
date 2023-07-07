@@ -10,13 +10,15 @@ export const ProductList = () => {
     const products= useSelector((store)=>store. productReducer.products)
  const dispatch = useDispatch()
 
- console.log(searchParams.getAll("category"));
- console.log(searchParams.getAll("gender"));
+//  console.log(searchParams.getAll("category"));
+//  console.log(searchParams.getAll("gender"));
 
  let obj={
   params:{
       category:searchParams.getAll("category"),
-      gender:searchParams.getAll("gender")
+      gender:searchParams.getAll("gender"),
+      _sort:searchParams.get("order") && "price",
+      _order:searchParams.get("order"),
   }
  }
    useEffect(()=>{

@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {useDispatch, useSelector} from "react-redux"
 import styled from "styled-components"
 import { login } from '../redux/Authentication/action';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export const Login = () => {
     const [email, setEmail]=useState("");
@@ -9,8 +10,16 @@ export const Login = () => {
 
     const auth=useSelector((store)=>store.authReducer.isAuth);
     const err=useSelector((store)=>store.authReducer.isError)
+    const dispatch=useDispatch();
+    const location=useLocation();
+    const navigate=useNavigate();
 
-    const dispatch=useDispatch()
+    useEffect(()=>{
+      if(auth){
+        navigate(location.state, {replace:true});
+        }
+    },[auth])
+
 
     const handleLogin=()=>{
         let userData={email, password}
