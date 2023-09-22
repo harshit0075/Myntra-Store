@@ -1,13 +1,12 @@
-
 import './App.css';
-import { Navbar } from './Components/Navbar';
-import { MainRoutes } from './Pages/MainRoutes';
+import Navbar from './components/Navbar';
+import AllRoutes from './components/AllRoutes';
 
 function App() {
   return (
     <div className="App">
      <Navbar/>
-  <MainRoutes/>
+     <AllRoutes/>
     </div>
   );
 }

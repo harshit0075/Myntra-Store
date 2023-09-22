@@ -1,78 +1,75 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import { postProduct } from "../Redux/productReducer/action";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
-const initialState={
-    name:"",
-    brand:"",
-    price:"",
-    discount:"",
-    image:"",
-    gender:"",
-    category:"",
-    color:""
-}
-const Admin = ()=>{
-    const [newProduct, setNewProduct]=useState(initialState);
-    const {error,isError} = useSelector((store)=>{
-       return{
-        error:store.productReducer.error,
-        isError:store.productReducer.isError
-    }
-    },shallowEqual)
-    const dispatch=useDispatch()
-    const handleChange=(e)=>{
-        const {value,name}=e.target
-        setNewProduct({...newProduct,[name]:name === "price" || name === "discount" ? +value: value})
-    }
-    const handlesubmit=(e)=>{
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import styled from "styled-components"
+import { updateProduct } from "../Redux/productReducer/action";
+const EditPage=()=>{
+    const {id} = useParams();
+    const [item,setItem]=useState({});
+    const navigate=useNavigate();
+    const location=useLocation();
+    const products = useSelector(store=>store.productReducer.products)
+    const dispatch=useDispatch();
+    useEffect(() => {
+        const data = products.find((el) => el.id === +id);
+        if (data) {
+          setItem(data);
+        }
+      }, [products, id]);
+      
+
+      const handlesubmit=(e)=>{
         e.preventDefault()
-        console.log(newProduct)
-        dispatch(postProduct(newProduct));
-        setNewProduct(initialState)
-    }
-    return (
-        <DIV error={isError.toString()}>
-            {error && <h3>{error}</h3>}
+        dispatch(updateProduct(item,id))
+        .then(()=>{
+            alert("Updated Successfully...!")
+            navigate("/")})
+      }
+      const handleChange=(e)=>{
+        const {name,value}=e.target
+        setItem({...item,[name]:name === "price" || name === "discount" ? +value: value})
+      }
+    return(
+        <DIV>
             <form onSubmit={handlesubmit}>
-                <h1>Add New Product</h1>
+                <h1>Edit Product - {item.id}</h1>
                 <input type="text" 
                     placeholder="Name"
                     name="name"
-                    value={newProduct.name} 
+                    value={item.name} 
                     onChange={handleChange}
                 />
                 <input type="text"
                     placeholder="Image URL"
                     name="image"
-                    value={newProduct.image}
+                    value={item.image}
                     onChange={handleChange}
                 />
                 <input type="text"
                     placeholder="Brand"
                     name="brand"
-                    value={newProduct.brand}
+                    value={item.brand}
                     onChange={handleChange}
                 />
                 <input type="number" 
                     placeholder="Price"
                     name="price"
-                    value={newProduct.price}
+                    value={item.price}
                     onChange={handleChange}
                 />
                 <input type="number" 
                     placeholder="Discount"
                     name="discount"
-                    value={newProduct.discount}
+                    value={item.discount}
                     onChange={handleChange}
                 />
-                <select name="gender" value={newProduct.gender} onChange={handleChange}>
+                <select name="gender" value={item.gender} onChange={handleChange}>
                     <option value="">select Gender</option>
                     <option value="male">Men</option>
                     <option value="female">Women</option>
                     <option value="kids">Kids</option>
                 </select>
-                <select name="category" value={newProduct.category} onChange={handleChange}>
+                <select name="category" value={item.category} onChange={handleChange}>
                     <option value="">select Categary</option>
                     <option value="topwear">Top wear</option>
                     <option value="bottomwear">Bottom Wear</option>
@@ -80,7 +77,7 @@ const Admin = ()=>{
                     <option value="dress">Dress</option>
                     <option value="footwear">Foot Wear</option>
                 </select>
-                <select name="color" value={newProduct.color} onChange={handleChange}>
+                <select name="color" value={item.color} onChange={handleChange}>
                     <option value="">select color</option>
                     <option value="red">Red</option>
                     <option value="blue">Blue</option>
@@ -90,8 +87,9 @@ const Admin = ()=>{
                     <option value="pink">Pink</option>
                     <option value="yellow">Yellow</option>
                 </select>
-                <button type="submit">Add Product</button>
+                <button type="submit">Update Product</button>
             </form>
+            
         </DIV>
     )
 }
@@ -129,4 +127,4 @@ button{
     background-color: #219ebc;
 }
 `
-export default Admin;
+export default EditPage;
